@@ -1,6 +1,7 @@
 [versions]
 agp = "8.8.0"
 gifview = "1.6"
+glide = "4.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -11,9 +12,15 @@ constraintlayout = "2.2.0"
 cardview = "1.0.0"
 navigationFragment = "2.8.5"
 navigationUi = "2.8.5"
+picasso = "2.71828"
+retrofit = "2.9.0"
+shimmer = "0.5.0"
+swiperefreshlayout = "1.1.0"
 
 [libraries]
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 gifview = { module = "com.github.Cutta:GifView", version.ref = "gifview" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -24,6 +31,10 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

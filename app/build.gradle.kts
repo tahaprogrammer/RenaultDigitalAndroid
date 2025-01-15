@@ -44,7 +44,12 @@ dependencies {
     implementation(libs.cardview)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
-    implementation (libs.gifview)
+    implementation(libs.gifview)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.swiperefreshlayout)
+    implementation(libs.shimmer)
+    implementation (libs.glide)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
