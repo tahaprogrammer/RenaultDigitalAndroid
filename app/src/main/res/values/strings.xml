@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Renault</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="profile">Profile</string>
+    <string name="unexpected_error">An unexpected error has occurred!</string>
 </resources>
