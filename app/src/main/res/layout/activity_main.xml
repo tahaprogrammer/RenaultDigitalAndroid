@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -40,13 +41,13 @@
 
             </androidx.cardview.widget.CardView>
 
-            <ImageView
+            <com.cunoraz.gifview.library.GifView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/image_view_filter"
                 android:layout_toEndOf="@id/image_view_menu"
-                android:src="@drawable/img_logo_renault" />
+                custom:gif="@drawable/gif_logo_renault" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/image_view_filter"
