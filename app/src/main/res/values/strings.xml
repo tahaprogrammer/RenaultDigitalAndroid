@@ -7,4 +7,11 @@
     <string name="no_result_found_description">Try adjusting your search\nto find what you are looking for</string>
     <string name="no_result_found">No result found</string>
     <string name="search_again">Search again</string>
+    <string name="renault">Renault</string>
+    <string name="ford">Ford</string>
+    <string name="toyota">Toyota</string>
+    <string name="mercedes">Mercedes</string>
+    <string name="porsche">Porsche</string>
+    <string name="dodge">Dodge</string>
+    <string name="share">Share</string>
 </resources>

@@ -18,7 +18,7 @@
             android:id="@+id/header_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="4dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/image_view_menu"
@@ -71,6 +71,13 @@
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
+
+        <View
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/header_section"
+            android:background="@color/action_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment_home"

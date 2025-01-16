@@ -63,24 +63,11 @@ public class ListingCarModelsAdapter extends RecyclerView.Adapter<RecyclerView.V
         CarEntity carEntity = carEntities.get(position);
         holderItem.binding.textViewTitle.setText(carEntity.getTitle());
         startLoading(holderItem);
-        /*Picasso.get().load(carEntity.getImageUrl()).into(holderItem.binding.imageViewHeader, new Callback() {
-            @Override
-            public void onSuccess() {
-                stopLoading(holderItem);
-            }
-
-            @Override
-            public void onError(Exception e) {
-                Picasso.get().load(R.drawable.img_no_image_found).into(holderItem.binding.imageViewHeader);
-                stopLoading(holderItem);
-                Log.e(TAG, "onError: " + e.getMessage());
-            }
-        });*/
 
         Glide.with(mContext)
                 .load(carEntity.getImageUrl())
-                .placeholder(R.drawable.img_no_image_found) // Optional placeholder
-                .error(R.drawable.img_no_image_found) // Fallback image if loading fails
+                .placeholder(R.drawable.img_no_image_found)
+                .error(R.drawable.img_no_image_found)
                 .into(new CustomTarget<Drawable>() {
                     @Override
                     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
@@ -98,7 +85,7 @@ public class ListingCarModelsAdapter extends RecyclerView.Adapter<RecyclerView.V
 
                     @Override
                     public void onLoadCleared(@Nullable Drawable placeholder) {
-                        // Clear resources if needed (optional)
+                        // No Need
                     }
                 });
     }

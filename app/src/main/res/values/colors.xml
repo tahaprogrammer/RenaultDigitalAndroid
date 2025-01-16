@@ -10,6 +10,7 @@
 
 
     <color name="action_color">#474747</color>
+    <color name="second_action_color">#FBFBFB</color>
     <!-- Shimmer Loading Colors -->
     <color name="shimmer_background_light_primary">#7E7E7E</color>
     <color name="shimmer_background_light_secondary">#636363</color>

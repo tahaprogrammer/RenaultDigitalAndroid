@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.maroc.renaultdigitalandroid.adapters.cars.ListingCarModelsAdapter;
 import com.maroc.renaultdigitalandroid.databinding.FragmentHomeBinding;
+import com.maroc.renaultdigitalandroid.dialogs.cars.JobDetailDialog;
 import com.maroc.renaultdigitalandroid.entities.CarEntity;
 import com.maroc.renaultdigitalandroid.services.cars.ListingCarModelOnlineService;
 
@@ -29,7 +30,6 @@ public class HomeFragment extends Fragment {
     private Activity mActivity;
     private ListingCarModelsAdapter listingCarModelsAdapter;
     private final ArrayList<CarEntity> carEntities = new ArrayList<>();
-    private boolean isLoading = false;
 
     @Nullable
     @Override
@@ -40,21 +40,20 @@ public class HomeFragment extends Fragment {
 
         this.initViews();
         this.initListeners();
-        this.listingJobsOnlineService(true);
+        this.listingJobsOnlineService();
 
         return binding.getRoot();
     }
 
     private void initViews() {
         listingCarModelsAdapter = new ListingCarModelsAdapter(mContext);
-        binding.recyclerViewJobs.setHasFixedSize(true);
+        binding.recyclerViewCarModels.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
-        binding.recyclerViewJobs.setLayoutManager(layoutManager);
-        binding.recyclerViewJobs.setAdapter(listingCarModelsAdapter);
+        binding.recyclerViewCarModels.setLayoutManager(layoutManager);
+        binding.recyclerViewCarModels.setAdapter(listingCarModelsAdapter);
         listingCarModelsAdapter.setOnItemClickingListener(position -> {
-            //CarEntity carEntity = carEntities.get(position);
-            //JobDetailDialog.getInstance(mActivity, mContext, carEntity).show();
-            Toast.makeText(mContext, "Not Yet", Toast.LENGTH_SHORT).show();
+            CarEntity carEntity = carEntities.get(position);
+            JobDetailDialog.getInstance(mActivity, mContext, carEntity).show();
         });
     }
 
@@ -62,40 +61,29 @@ public class HomeFragment extends Fragment {
         binding.swipeRefreshLayoutJobs.setOnRefreshListener(() -> {
             binding.swipeRefreshLayoutJobs.setRefreshing(false);
             carEntities.clear();
-            this.listingJobsOnlineService(true);
+            this.listingJobsOnlineService();
         });
     }
 
-    public void listingJobsOnlineService(boolean loadingAnimation) {
-        if (loadingAnimation) {
-            this.startLoading();
-        }
+    public void listingJobsOnlineService() {
+        this.startLoading();
         new ListingCarModelOnlineService() {
             @Override
             public void onSuccess(ArrayList<CarEntity> mCarEntities) {
                 carEntities.addAll(mCarEntities);
                 listingCarModelsAdapter.updateList(carEntities);
-                if (loadingAnimation) {
-                    stopLoading();
-                }
-                isLoading = false;
+                stopLoading();
             }
 
             @Override
             public void onFailure(String message) {
-                if (loadingAnimation) {
-                    stopLoading();
-                }
-                isLoading = false;
+                stopLoading();
                 Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onUnauthorized() {
-                if (loadingAnimation) {
-                    stopLoading();
-                }
-                isLoading = false;
+                stopLoading();
                 Toast.makeText(mContext, "onUnauthorized", Toast.LENGTH_SHORT).show();
             }
         }.execute();
@@ -103,6 +91,7 @@ public class HomeFragment extends Fragment {
 
     private void startLoading() {
         carEntities.clear();
+        binding.recyclerViewCarModels.setEnabled(false);
         binding.layoutNoDataFound.getRoot().setVisibility(View.GONE);
         binding.swipeRefreshLayoutJobs.setVisibility(View.GONE);
         binding.shimmerViewContainer.setVisibility(View.VISIBLE);
@@ -110,12 +99,15 @@ public class HomeFragment extends Fragment {
     }
 
     private void stopLoading() {
+        binding.recyclerViewCarModels.setEnabled(true);
         binding.swipeRefreshLayoutJobs.setVisibility(View.VISIBLE);
         binding.shimmerViewContainer.setVisibility(View.GONE);
         binding.shimmerViewContainer.stopShimmer();
         if (carEntities.isEmpty()) {
             binding.swipeRefreshLayoutJobs.setVisibility(View.GONE);
             binding.layoutNoDataFound.getRoot().setVisibility(View.VISIBLE);
+        } else {
+            binding.layoutNoDataFound.getRoot().setVisibility(View.GONE);
         }
     }
 }
