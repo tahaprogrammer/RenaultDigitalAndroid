@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,10 +16,11 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.maroc.renaultdigitalandroid.R;
 import com.maroc.renaultdigitalandroid.databinding.ItemCarBinding;
-import com.maroc.renaultdigitalandroid.entities.CarEntity;
 import com.maroc.renaultdigitalandroid.interfaces.list.OnItemClickingListener;
+import com.maroc.renaultdigitalandroid.model.car.CarEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListingCarModelsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -26,7 +28,7 @@ public class ListingCarModelsAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     private final Context mContext;
     public OnItemClickingListener onItemClickingListener;
-    private ArrayList<CarEntity> carEntities = new ArrayList<>();
+    private List<CarEntity> carEntities = new ArrayList<>();
 
     public ListingCarModelsAdapter(Context mContext) {
         this.mContext = mContext;
@@ -111,8 +113,12 @@ public class ListingCarModelsAdapter extends RecyclerView.Adapter<RecyclerView.V
         holder.binding.shimmerViewContainer.stopShimmer();
     }
 
-    public void updateList(ArrayList<CarEntity> carEntities) {
+    public void updateList(List<CarEntity> carEntities) {
         this.carEntities = carEntities;
         notifyDataSetChanged();
+    }
+
+    public CarEntity getCarAtPosition(int position) {
+        return carEntities.get(position);
     }
 }

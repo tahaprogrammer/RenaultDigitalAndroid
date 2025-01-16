@@ -1,39 +1,42 @@
-package com.maroc.renaultdigitalandroid.services.cars;
+package com.maroc.renaultdigitalandroid.viewmodel.car;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
-import com.maroc.renaultdigitalandroid.model.car.CarEntity;
 import com.maroc.renaultdigitalandroid.interfaces.retrofit.CarApiService;
+import com.maroc.renaultdigitalandroid.model.car.CarEntity;
 import com.maroc.renaultdigitalandroid.providers.RetrofitClientSetup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListingCarModelOnlineService {
+public class CarViewModel extends ViewModel {
 
-    private static final String TAG = "ListingCarModelOnlineSe";
+    private static final String TAG = "CarViewModel";
+    private final CarApiService carApiService;
+    private final MutableLiveData<List<CarEntity>> carLiveData = new MutableLiveData<>();
 
-    public ListingCarModelOnlineService() {
+    public CarViewModel() {
+        carApiService = RetrofitClientSetup.getClient().create(CarApiService.class);
     }
 
-    public LiveData<List<CarEntity>> execute() {
-        CarApiService carApiService = RetrofitClientSetup.getClient().create(CarApiService.class);
-        MutableLiveData<List<CarEntity>> carLiveData = new MutableLiveData<>();
+    public MutableLiveData<List<CarEntity>> getCarLiveData() {
+        return carLiveData;
+    }
 
+    public void fetchCars() {
         //Fetch Data
         Call<List<CarEntity>> call = carApiService.getCarModels();
-        if(call == null) {
+        if (call == null) {
             Log.e(TAG, "error: call is null");
             carLiveData.setValue(null);
-            return carLiveData;
+            return;
         }
         call.enqueue(new Callback<>() {
             @Override
@@ -52,6 +55,5 @@ public class ListingCarModelOnlineService {
                 carLiveData.setValue(null);
             }
         });
-        return carLiveData;
     }
 }

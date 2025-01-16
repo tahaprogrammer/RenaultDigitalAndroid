@@ -1,6 +1,6 @@
 package com.maroc.renaultdigitalandroid.interfaces.retrofit;
 
-import com.maroc.renaultdigitalandroid.entities.CarEntity;
+import com.maroc.renaultdigitalandroid.model.car.CarEntity;
 
 import java.util.List;
 

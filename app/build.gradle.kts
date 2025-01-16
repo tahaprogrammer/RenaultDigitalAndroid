@@ -50,6 +50,8 @@ dependencies {
     implementation(libs.swiperefreshlayout)
     implementation(libs.shimmer)
     implementation (libs.glide)
+    implementation (libs.lifecycle.viewmodel)
+    implementation (libs.lifecycle.livedata)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

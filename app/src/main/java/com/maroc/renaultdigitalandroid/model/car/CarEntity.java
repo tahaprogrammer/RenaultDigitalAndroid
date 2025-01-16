@@ -1,4 +1,4 @@
-package com.maroc.renaultdigitalandroid.entities;
+package com.maroc.renaultdigitalandroid.model.car;
 
 public class CarEntity {
 

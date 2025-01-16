@@ -1,4 +1,4 @@
-package com.maroc.renaultdigitalandroid.fragments;
+package com.maroc.renaultdigitalandroid.view.fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,20 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.maroc.renaultdigitalandroid.databinding.FragmentProfileBinding;
+import com.maroc.renaultdigitalandroid.databinding.FragmentFavoriteBinding;
 
-public class ProfileFragment extends Fragment {
+public class FavoriteFragment extends Fragment {
 
-    private static final String TAG = "ProfileFragment";
-
-    private FragmentProfileBinding binding;
+    private FragmentFavoriteBinding binding;
     private Context mContext;
     private Activity mActivity;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentProfileBinding.inflate(inflater);
+        binding = FragmentFavoriteBinding.inflate(inflater);
         mContext = getContext();
         mActivity = getActivity();
 

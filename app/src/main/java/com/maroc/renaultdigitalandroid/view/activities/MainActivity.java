@@ -1,4 +1,4 @@
-package com.maroc.renaultdigitalandroid.activities;
+package com.maroc.renaultdigitalandroid.view.activities;
 
 import android.os.Bundle;
 

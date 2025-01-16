@@ -21,7 +21,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.maroc.renaultdigitalandroid.R;
 import com.maroc.renaultdigitalandroid.databinding.DialogCarModelDetailBinding;
-import com.maroc.renaultdigitalandroid.entities.CarEntity;
+import com.maroc.renaultdigitalandroid.model.car.CarEntity;
 
 public class JobDetailDialog {
 
