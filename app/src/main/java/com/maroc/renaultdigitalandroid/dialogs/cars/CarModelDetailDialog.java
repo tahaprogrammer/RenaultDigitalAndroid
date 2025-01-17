@@ -23,16 +23,16 @@ import com.maroc.renaultdigitalandroid.R;
 import com.maroc.renaultdigitalandroid.databinding.DialogCarModelDetailBinding;
 import com.maroc.renaultdigitalandroid.model.car.CarEntity;
 
-public class JobDetailDialog {
+public class CarModelDetailDialog {
 
-    private static final String TAG = "JobDetailDialog";
+    private static final String TAG = "CarModelDetailDialog";
     private final DialogCarModelDetailBinding binding;
     private final Activity mActivity;
     private final Context mContext;
     private final CarEntity carEntity;
     private BottomSheetDialog bottomSheetDialog;
 
-    public JobDetailDialog(Activity mActivity, Context mContext, CarEntity carEntity) {
+    public CarModelDetailDialog(Activity mActivity, Context mContext, CarEntity carEntity) {
         this.mActivity = mActivity;
         this.mContext = mContext;
         this.carEntity = carEntity;
@@ -41,8 +41,8 @@ public class JobDetailDialog {
         this.initListener();
     }
 
-    public static JobDetailDialog getInstance(Activity mActivity, Context mContext, CarEntity carEntity) {
-        return new JobDetailDialog(mActivity, mContext, carEntity);
+    public static CarModelDetailDialog getInstance(Activity mActivity, Context mContext, CarEntity carEntity) {
+        return new CarModelDetailDialog(mActivity, mContext, carEntity);
     }
 
     private void initViews() {

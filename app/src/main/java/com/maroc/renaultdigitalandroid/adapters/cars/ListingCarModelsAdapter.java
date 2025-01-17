@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ListingCarModelsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final String TAG = "ListingJobsAdapter";
+    private static final String TAG = "ListingCarModelsAdapter";
 
     private final Context mContext;
     public OnItemClickingListener onItemClickingListener;

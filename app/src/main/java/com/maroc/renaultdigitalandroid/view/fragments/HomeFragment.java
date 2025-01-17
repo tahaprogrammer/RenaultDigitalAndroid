@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.maroc.renaultdigitalandroid.adapters.cars.ListingCarModelsAdapter;
 import com.maroc.renaultdigitalandroid.databinding.FragmentHomeBinding;
-import com.maroc.renaultdigitalandroid.dialogs.cars.JobDetailDialog;
+import com.maroc.renaultdigitalandroid.dialogs.cars.CarModelDetailDialog;
 import com.maroc.renaultdigitalandroid.model.car.CarEntity;
 import com.maroc.renaultdigitalandroid.viewmodel.car.CarViewModel;
 
@@ -51,13 +51,13 @@ public class HomeFragment extends Fragment {
         // Handle item clicks
         listingCarModelsAdapter.setOnItemClickingListener(position -> {
             CarEntity carEntity = listingCarModelsAdapter.getCarAtPosition(position);
-            JobDetailDialog.getInstance(mActivity, mContext, carEntity).show();
+            CarModelDetailDialog.getInstance(mActivity, mContext, carEntity).show();
         });
     }
 
     private void initListeners() {
-        binding.swipeRefreshLayoutJobs.setOnRefreshListener(() -> {
-            binding.swipeRefreshLayoutJobs.setRefreshing(false);
+        binding.swipeRefreshLayoutCars.setOnRefreshListener(() -> {
+            binding.swipeRefreshLayoutCars.setRefreshing(false);
             startLoading();
             carViewModel.fetchCars();
         });
@@ -84,14 +84,14 @@ public class HomeFragment extends Fragment {
     private void startLoading() {
         binding.recyclerViewCarModels.setEnabled(false);
         binding.layoutNoDataFound.getRoot().setVisibility(View.GONE);
-        binding.swipeRefreshLayoutJobs.setVisibility(View.GONE);
+        binding.swipeRefreshLayoutCars.setVisibility(View.GONE);
         binding.shimmerViewContainer.setVisibility(View.VISIBLE);
         binding.shimmerViewContainer.startShimmer();
     }
 
     private void showData() {
         binding.recyclerViewCarModels.setEnabled(true);
-        binding.swipeRefreshLayoutJobs.setVisibility(View.VISIBLE);
+        binding.swipeRefreshLayoutCars.setVisibility(View.VISIBLE);
         binding.shimmerViewContainer.setVisibility(View.GONE);
         binding.shimmerViewContainer.stopShimmer();
         binding.layoutNoDataFound.getRoot().setVisibility(View.GONE);
@@ -99,7 +99,7 @@ public class HomeFragment extends Fragment {
 
     private void showNoData() {
         binding.recyclerViewCarModels.setEnabled(false);
-        binding.swipeRefreshLayoutJobs.setVisibility(View.GONE);
+        binding.swipeRefreshLayoutCars.setVisibility(View.GONE);
         binding.shimmerViewContainer.setVisibility(View.GONE);
         binding.shimmerViewContainer.stopShimmer();
         binding.layoutNoDataFound.getRoot().setVisibility(View.VISIBLE);
